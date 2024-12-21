@@ -33,6 +33,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { character } from "./character.ts";
 import type { DirectClient } from "@ai16z/client-direct";
+import { webSearchPlugin } from "@ai16z/plugin-web-search";
 
 const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
 const __dirname = path.dirname(__filename); // get the name of the directory
@@ -186,6 +187,8 @@ export async function initializeClients(
     const twitterClients = await TwitterClientInterface.start(runtime);
     clients.push(twitterClients);
   }
+
+  // clients.push(await webSearchPlugin.
 
   if (character.plugins?.length > 0) {
     for (const plugin of character.plugins) {
